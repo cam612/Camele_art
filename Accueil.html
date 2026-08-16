@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camélé_art | Accueil</title>
+    
+    <link rel="icon" href="https://i.postimg.cc/fTd7QJvj/cam_Fichier_61.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="crochets.css">
+</head>
+
+<body>
+    <main>
+        <nav id="menu">
+            <div class="ul1">
+                <a href="Accueil.html">
+                    <img class="logo" src="https://i.postimg.cc/wTN5Y7kX/cam-Fichier-51.png" alt="Logo Camélé'art">
+                </a>
+            </div>
+
+            <div class="ul3">
+                <form class="search-box" action="Creations.html" method="GET">
+                    <input type="text" name="q" placeholder="Rechercher...">
+                    <button type="submit">
+                        <img class="icone_nav" src="fond/recherche.png" alt="Rechercher">
+                    </button>
+                </form>
+            </div>
+
+            <ul class="ul2">
+                <li class="dropdown">
+                    <b><a class="titre_menu" href="Creations.html">Créations</a></b>
+                    <div class="sous-menu">
+                        <ul class="bloc-liens">
+                            <li><a href="Creations.html#animaux">Animaux</a></li>
+                            <li><a href="Creations.html#noel">Noël</a></li>
+                            <li><a href="Creations.html#princesses">Princesses</a></li>
+                        </ul>
+                        <ul class="bloc-liens">
+                            <li><a href="Creations.html#fantastique">Fantastique</a></li>
+                            <li><a href="Creations.html#nourriture">Nourriture</a></li>
+                            <li><a href="Creations.html#plantes">Plantes</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sous-menu-droite">
+                        <a href="Creations.html#films-&-dessins-animes">Films & dessins animés</a>
+                        <a href="Creations.html#grands-modeles">Grands Modèles</a>
+                        <a href="Creations.html#autres">Autres</a>
+                    </div>
+                </li>
+                <li><b><a class="titre_menu" href="Contact.html">Contact</a></b></li>
+                <li><b><a class="titre_menu" href="Commande.html">Sur-mesure</a></b></li>
+                <li>
+                    <a href="Panier.html" class="cart-icon-container">
+                        <img class="icone_nav" src="https://cdn-icons-png.flaticon.com/128/10252/10252890.png" alt="Panier">
+                        <span id="cart-badge" class="cart-badge">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <section class="a_propos">
+            <h2>À propos</h2>
+            <article class="a_propos_txt">
+                <p>
+                    Bienvenue dans mon univers créatif !<br>
+                    Moi c'est Camille, et je suis la créatrice passionnée qui se cache derrière Camélé'art.<br>
+                    Ici, tout commence avec une simple pelote de fil et un crochet. Rang après rang, maille après maille, je prends le temps de donner vie à des objets uniques, colorés et texturés.
+                    Loin de la fabrication à la chaîne, je mets un point d'honneur à créer des pièces qui ont une âme, faites pour durer et pour apporter un peu de douceur dans votre quotidien.<br>
+                    Installez-vous confortablement et bonne découverte !
+                </p>
+                <img src="fond/amigurumi.png" alt="Création en crochet amigurumi">
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div id="foot_cont">
+            <p>Site développé par Camille Lacharme avec HTML et CSS.</p>
+            <p>&copy; Camille Lacharme 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        // Masquer/Afficher le menu au défilement
+        let prevScrollpos = window.scrollY;
+        window.onscroll = function() {
+            const currentScrollPos = window.scrollY;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("menu").style.top = "0";
+            } else {
+                document.getElementById("menu").style.top = "-250px";
+            }
+            prevScrollpos = currentScrollPos;
+        };
+
+        // Mise à jour du badge panier
+        function updateCartBadge() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || {};
+            const panierSM = JSON.parse(localStorage.getItem('panier')) || [];
+            const totalCount = Object.values(cart).reduce((sum, qty) => sum + qty, 0) + panierSM.length;
+            const badge = document.getElementById("cart-badge");
+
+            if (!badge) return;
+
+            badge.innerText = totalCount;
+            if (totalCount === 0) {
+                badge.classList.add("hidden");
+            } else {
+                badge.classList.remove("hidden");
+            }
+        }
+
+        updateCartBadge();
+    </script>
+</body>
+</html>

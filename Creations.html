@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="https://i.postimg.cc/fTd7QJvj/cam_Fichier_61.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camélé_art | Créations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="crochets.css">
+</head>
+
+<body>
+    <main>
+        <nav id="menu">
+            <div class="ul1">
+                <a href="Accueil.html"><img class="logo" src="https://i.postimg.cc/wTN5Y7kX/cam-Fichier-51.png" alt=""></a>
+            </div>
+
+            <div class="ul3">
+                <form class="search-box" onsubmit="searchCreations(event)">
+                    <input type="text" id="searchInput" name="q" placeholder="Rechercher...">
+                    <button type="submit">
+                        <img class="icone_nav" src="fond/recherche.png" alt="Rechercher">
+                    </button>
+                </form>
+            </div>
+
+            <ul class="ul2">
+                <li class="dropdown">
+                    <b><a class="titre_menu" href="Creations.html">Créations</a></b>
+                    <div class="sous-menu">
+                        <ul class="bloc-liens">
+                            <li><a href="Creations.html#animaux">Animaux</a></li>
+                            <li><a href="Creations.html#noel">Noël</a></li>
+                            <li><a href="Creations.html#princesses">Princesses</a></li>
+                        </ul>
+                        <ul class="bloc-liens">
+                            <li><a href="Creations.html#fantastique">Fantastique</a></li>
+                            <li><a href="Creations.html#nourriture">Nourriture</a></li>
+                            <li> <a href="Creations.html#plantes">Plantes</a></li>
+                        </ul>
+                    </div>
+                     <!-- SOUS-MENU LATÉRAL À DROITE -->
+                    <div class="sous-menu-droite">
+                        <a href="Creations.html#films-&-dessins-animes">Films & dessins animés</a>
+                        <a href="Creations.html#grands-modeles">Grands Modèles</a>
+                        <a href="Creations.html#autres">Autres</a>
+                       
+                    </div>
+
+                    
+                </li>
+                <li><b><a class="titre_menu" href="Contact.html">Contact</a></b></li>
+                <li><b><a class="titre_menu" href="Commande.html">Sur-mesure</a></b></li>
+                <li>
+                    <a href="Panier.html" class="cart-icon-container">
+                        <img class="icone_nav" src="https://cdn-icons-png.flaticon.com/128/10252/10252890.png" alt="Panier">
+                        <span id="cart-badge" class="cart-badge">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+      
+        <div id="notification" class="notification">Ajouté au panier !</div>
+
+        <div id="myModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <img class="modal-content" id="modalImage">
+                <p id="modalText" class="modal-description"></p> 
+            </div>
+        </div>
+      
+        <div class="gallery" id="gallery"></div>
+        <div id="noResults" class="no-results" style="display:none;">Aucun résultat trouvé</div>
+    </main>
+
+    <footer>
+        <div id="foot_cont">
+          <p>Site développé par Camille Lacharme avec HTML et CSS.</p>
+          <p>&copy Camille Lacharme 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+        function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || {};
+        const panierSM = JSON.parse(localStorage.getItem('panier')) || [];
+
+        const totalCount = Object.values(cart).reduce((sum, qty) => sum + qty, 0) + panierSM.length;
+        const badge = document.getElementById("cart-badge");
+
+        if (!badge) return;
+
+        badge.innerText = totalCount;
+        if (totalCount === 0) {
+            badge.classList.add("hidden");
+        } else {
+            badge.classList.remove("hidden");
+        }
+    }
+
+        function updateQuantity(type, change) {
+            const quantityElement = document.getElementById(`${type}-quantity`);
+            let currentQuantity = parseInt(quantityElement.innerText) || 0;
+            currentQuantity += change;
+            
+            if (currentQuantity < 0) currentQuantity = 0;
+            
+            quantityElement.innerText = currentQuantity;
+
+            if (currentQuantity > 0) {
+                cart[type] = currentQuantity; 
+                if (change > 0) showNotification(); 
+            } else {
+                delete cart[type]; 
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart)); 
+            updateCartBadge();
+        }
+
+        function showNotification() {
+            const notif = document.getElementById("notification");
+            notif.classList.add("show");
+            setTimeout(() => {
+                notif.classList.remove("show");
+            }, 2000);
+        }
+
+        function openModal(imageSrc, descriptionText) {
+            const modal = document.getElementById("myModal");
+            const modalImage = document.getElementById("modalImage");
+            const modalText = document.getElementById("modalText"); 
+            
+            modal.style.display = "block";
+            modalImage.src = imageSrc;
+            modalText.innerText = descriptionText; 
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        // Chargement des créations
+        fetch("creations.json")
+        .then(response => response.json())
+        .then(data => {
+            const gallery = document.getElementById("gallery");
+            let currentCategorie = "";
+
+            data.forEach(item => {
+                if (item.categorie !== currentCategorie) {
+                    currentCategorie = item.categorie;
+
+                    const title = document.createElement("h2");
+                    title.classList.add("theme-title");
+                    title.innerText = currentCategorie;
+                    title.id = currentCategorie
+                        .toLowerCase()
+                        .normalize("NFD").replace(/[\u0300-\u036f]/g, "") 
+                        .replace(/[\s_]+/g, '-');                        
+
+                    gallery.appendChild(title);
+                }
+
+                const figure = document.createElement("figure");
+                const currentQuantity = cart[item.id] || 0;
+                const safeDescription = item.description ? item.description.replace(/'/g, "\\'") : "Aucune description disponible.";
+
+                figure.innerHTML = `
+                    <img src="${item.image}" alt="${item.nom}" onclick="openModal('${item.image}', '${safeDescription}')">
+                    <div class="quantity-container">
+                        <span class="quantity-label">${item.nom} : ${item.prix} €</span>
+                        <div class="quantity-controls">
+                            <button class="quantity-button" onclick="updateQuantity('${item.id}', -1)">-</button>
+                            <span id="${item.id}-quantity" class="quantity-display">${currentQuantity}</span>
+                            <button class="quantity-button" onclick="updateQuantity('${item.id}', 1)">
+                                <img src="fond/add-to-cart.png" alt="Ajouter au panier" class="btn-cart-img">
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                gallery.appendChild(figure);
+            });
+
+            // Une fois les éléments affichés, verifier si une recherche dans l'URL existe
+            const urlParams = new URLSearchParams(window.location.search);
+            const queryParam = urlParams.get("q");
+
+            if (queryParam) {
+                document.getElementById("searchInput").value = queryParam;
+                searchCreations(null);
+            }
+        });
+
+        // Gestion du Menu Rétractable
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("menu").style.top = "0";
+            } else {
+                document.getElementById("menu").style.top = "-250px";
+            }
+            prevScrollpos = currentScrollPos;
+        }
+
+        // Moteur de recherche
+        function searchCreations(event) {
+            if (event) event.preventDefault();
+
+            const query = document.getElementById("searchInput").value.toLowerCase().trim();
+            const figures = document.querySelectorAll("#gallery figure");
+            const titles = document.querySelectorAll("#gallery .theme-title");
+            const noResults = document.getElementById("noResults");
+
+            let visibleCount = 0;
+
+            figures.forEach(figure => {
+                const nameElement = figure.querySelector(".quantity-label");
+                if (nameElement) {
+                    const name = nameElement.innerText.toLowerCase();
+                    const isVisible = name.includes(query);
+                    figure.style.display = isVisible ? "" : "none";
+
+                    if (isVisible) visibleCount++;
+                }
+            });
+
+            titles.forEach(title => {
+                let hasVisibleChild = false;
+                let nextElem = title.nextElementSibling;
+
+                while (nextElem && !nextElem.classList.contains("theme-title")) {
+                    if (nextElem.tagName === "FIGURE" && nextElem.style.display !== "none") {
+                        hasVisibleChild = true;
+                        break;
+                    }
+                    nextElem = nextElem.nextElementSibling;
+                }
+
+                title.style.display = hasVisibleChild ? "" : "none";
+            });
+
+            noResults.style.display = visibleCount === 0 ? "block" : "none";
+        }
+
+        document.getElementById("searchInput").addEventListener("input", searchCreations);
+
+        // Initialisation du badge au chargement
+        updateCartBadge();
+    </script>
+</body>
+</html>

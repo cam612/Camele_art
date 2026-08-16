@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camélé_art | Sur-mesure</title>
+
+    <link rel="icon" href="https://i.postimg.cc/fTd7QJvj/cam_Fichier_61.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="crochets.css">
+</head>
+
+<body>
+    <main>
+        <!-- Menu de navigation -->
+        <nav id="menu">
+            <div class="ul1">
+                <a href="Accueil.html">
+                    <img class="logo" src="https://i.postimg.cc/wTN5Y7kX/cam-Fichier-51.png" alt="Logo Camélé'art">
+                </a>
+            </div>
+
+            <div class="ul3">
+                <form class="search-box" action="Creations.html" method="GET">
+                    <input type="text" name="q" placeholder="Rechercher...">
+                    <button type="submit">
+                        <img class="icone_nav" src="fond/recherche.png" alt="Rechercher">
+                    </button>
+                </form>
+            </div>
+
+            <ul class="ul2">
+                <li class="dropdown">
+                    <b><a class="titre_menu" href="Creations.html">Créations</a></b>
+                    <div class="sous-menu">
+                        <ul class="bloc-liens">
+                            <li><a href="Creations.html#animaux">Animaux</a></li>
+                            <li><a href="Creations.html#noel">Noël</a></li>
+                            <li><a href="Creations.html#princesses">Princesses</a></li>
+                        </ul>
+                        <ul class="bloc-liens">
+                            <li><a href="Creations.html#fantastique">Fantastique</a></li>
+                            <li><a href="Creations.html#nourriture">Nourriture</a></li>
+                            <li><a href="Creations.html#plantes">Plantes</a></li>
+                        </ul>
+                    </div>
+                    <div class="sous-menu-droite">
+                        <a href="Creations.html#films-&-dessins-animes">Films & dessins animés</a>
+                        <a href="Creations.html#grands-modeles">Grands Modèles</a>
+                        <a href="Creations.html#autres">Autres</a>
+                    </div>
+                </li>
+                <li><b><a class="titre_menu" href="Contact.html">Contact</a></b></li>
+                <li><b><a class="titre_menu" href="Commande.html">Sur-mesure</a></b></li>
+                <li>
+                    <a href="Panier.html" class="cart-icon-container">
+                        <img class="icone_nav" src="https://cdn-icons-png.flaticon.com/128/10252/10252890.png" alt="Panier">
+                        <span id="cart-badge" class="cart-badge">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="notification" class="notification">Ajouté au panier !</div>
+
+        <section class="personnalisation">
+            <h2>Création sur mesure</h2>
+            <p>
+                Déposez une photo, indiquez un prénom et décrivez-moi la personnalité que vous imaginez… et je transforme tout ça en un petit personnage crocheté, unique et fait main, pour seulement 15 €.
+                Que ce soit pour offrir, décorer, ou simplement se faire plaisir, je crée une figurine qui ressemble vraiment à la personne : coiffure, style, petits détails… tout est pensé pour donner vie à votre mini‑vous en laine.
+                Un cadeau original, personnalisé et plein de charme, réalisé avec soin et passion.
+            </p>
+
+            <div class="surmesure-container">
+                <form id="surmesure-form">
+                    <div>
+                        <label>Photo :</label><br>
+                        <label for="photo" class="upload-btn">Déposer une photo</label>
+                        <input type="file" id="photo" accept="image/*" required style="display:none;">
+
+                        <!-- Aperçu de l'image -->
+                        <br>
+                        <img id="preview" style="display:none; max-width:200px; border-radius:10px; margin-top:10px;" alt="Aperçu">
+                        <br><br>
+                    </div>
+
+                    <div>
+                        <label for="prenom">Prénom :</label><br>
+                        <input class="input_contact" type="text" id="prenom" required><br><br>
+
+                        <label for="description">Description :</label><br>
+                        <textarea id="description" rows="4" required></textarea><br><br>
+
+                        <div class="cart-actions">
+                            <button type="button" id="supprimer" class="cart-clear">Supprimer</button>
+                            <button type="submit" class="upload-btn">Ajouter au panier</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div id="foot_cont">
+            <p>Site développé par Camille Lacharme avec HTML et CSS.</p>
+            <p>&copy; Camille Lacharme 2026</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // --- 1. GESTION DU SCROLL DU MENU ---
+        let prevScrollpos = window.scrollY;
+        window.onscroll = function() {
+            let currentScrollPos = window.scrollY;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("menu").style.top = "0";
+            } else {
+                document.getElementById("menu").style.top = "-250px";
+            }
+            prevScrollpos = currentScrollPos;
+        };
+
+        // --- 2. NOTIFICATION ANIMÉE ---
+        function showNotification() {
+            const notif = document.getElementById("notification");
+            if (notif) {
+                notif.classList.add("show");
+                setTimeout(() => {
+                    notif.classList.remove("show");
+                }, 2000);
+            }
+        }
+
+        // --- 3. MISE À JOUR DU BADGE DE PANIER ---
+        function updateCartBadge() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || {};
+            const panierSM = JSON.parse(localStorage.getItem('panier')) || [];
+
+            const totalCount = Object.values(cart).reduce((sum, qty) => sum + qty, 0) + panierSM.length;
+            const badge = document.getElementById("cart-badge");
+
+            if (!badge) return;
+
+            badge.innerText = totalCount;
+            if (totalCount === 0) {
+                badge.classList.add("hidden");
+            } else {
+                badge.classList.remove("hidden");
+            }
+        }
+
+        // --- 4. APERÇU DE LA PHOTO UPLOADÉE ---
+        const photoInput = document.getElementById("photo");
+        if (photoInput) {
+            photoInput.addEventListener("change", function(event) {
+                const fichier = event.target.files[0];
+                const preview = document.getElementById("preview");
+
+                if (!preview) return;
+
+                if (!fichier) {
+                    preview.style.display = "none";
+                    preview.src = "";
+                    return;
+                }
+
+                const lecteur = new FileReader();
+                lecteur.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = "block";
+                };
+                lecteur.readAsDataURL(fichier);
+            });
+        }
+
+        // --- 5. SOUMISSION DU FORMULAIRE ET AJOUT AU PANIER ---
+        const form = document.getElementById("surmesure-form");
+        if (form) {
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                const prenom = document.getElementById("prenom").value.trim();
+                const description = document.getElementById("description").value.trim();
+                const fichier = document.getElementById("photo").files[0];
+
+                if (!prenom || !description || !fichier) return;
+
+                const lecteur = new FileReader();
+
+                lecteur.onload = function(event) {
+                    const base64 = event.target.result;
+
+                    const produit = {
+                        id: "surmesure-" + Date.now(),
+                        nom: prenom,
+                        prenom: prenom,
+                        description: description,
+                        prix: 15,
+                        photoClient: base64
+                    };
+
+                    // Sauvegarde dans le localStorage
+                    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+                    panier.push(produit);
+                    localStorage.setItem("panier", JSON.stringify(panier));
+
+                    // Déclenchement de la notification et mise à jour du badge
+                    showNotification();
+                    updateCartBadge();
+
+                    // Réinitialisation du formulaire et de l'aperçu photo
+                    form.reset();
+                    const preview = document.getElementById("preview");
+                    if (preview) {
+                        preview.style.display = "none";
+                        preview.src = "";
+                    }
+                };
+
+                lecteur.readAsDataURL(fichier);
+            });
+        }
+
+        // --- 6. BOUTON RÉINITIALISER ---
+        const btnSupprimer = document.getElementById("supprimer");
+        if (btnSupprimer) {
+            btnSupprimer.addEventListener("click", function() {
+                if (form) form.reset();
+                const preview = document.getElementById("preview");
+                if (preview) {
+                    preview.style.display = "none";
+                    preview.src = "";
+                }
+            });
+        }
+
+        // --- 7. INITIALISATION DU BADGE AU CHARGEMENT ---
+        document.addEventListener("DOMContentLoaded", updateCartBadge);
+    </script>
+</body>
+</html>

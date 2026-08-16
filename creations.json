@@ -1,0 +1,718 @@
+[
+  {
+    "nom": "Ourson",
+    "image": "animaux/ourson.png",
+    "id": "ourson",
+    "prix": "12",
+    "categorie": "Animaux" ,
+    "description": "Un adorable petit ours brun fait main avec amour, parfait pour un cadeau unique. Diamètre: 12cm*5cm"
+  },
+  {
+    "nom": "Renne",
+    "image": "animaux/renne.png",
+    "id": "renne",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Éléphant",
+    "image": "animaux/elephant.png",
+    "id": "elephant",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Canard",
+    "image": "animaux/canard.png",
+    "id": "canard",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Vache",
+    "image": "animaux/vache.png",
+    "id": "vache",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Vache Milka",
+    "image": "animaux/vachem.png",
+    "id": "vachem",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Renard",
+    "image": "animaux/renard.png",
+    "id": "renard",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Girafe",
+    "image": "animaux/girafe.png",
+    "id": "girafe",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Lapin",
+    "image": "animaux/lapin.png",
+    "id": "lapin",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Koala",
+    "image": "animaux/koala.png",
+    "id": "koala",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Cochon",
+    "image": "animaux/cochon1.png",
+    "id": "cochon1",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Cochon",
+    "image": "animaux/cochon2.png",
+    "id": "cochon2",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Cochons",
+    "image": "animaux/famille.png",
+    "id": "famille",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Ecureuil",
+    "image": "animaux/ecureuil.png",
+    "id": "ecureuil",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Faon",
+    "image": "animaux/faon.png",
+    "id": "faon",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+   {
+    "nom": "Panda",
+    "image": "animaux/panda.png",
+    "id": "panda",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+   {
+    "nom": "Tigre",
+    "image": "animaux/tigre.png",
+    "id": "tigre",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Perroquet",
+    "image": "animaux/perroquet.png",
+    "id": "perroquet",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+   {
+    "nom": "Méduse bleue",
+    "image": "animaux/meduse2.png",
+    "id": "meduse2",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+   {
+    "nom": "Méduse rose",
+    "image": "animaux/meduse1.png",
+    "id": "meduse1",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+    {
+    "nom": "Grenouille",
+    "image": "animaux/grenouille.png",
+    "id": "grenouille",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+   {
+    "nom": "Pingouin",
+    "image": "animaux/pingouin1.png",
+    "id": "pingouin1",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+{
+    "nom": "Pingouin",
+    "image": "animaux/pingouin2.png",
+    "id": "pingouin2",
+    "prix": "12",
+    "categorie": "Animaux"
+  },
+
+  {
+    "nom": "Colibri",
+    "image": "animaux/colibri.png",
+    "id": "colibri",
+    "prix": "8",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Mésange",
+    "image": "animaux/mesange.png",
+    "id": "mesange",
+    "prix": "8",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Paon",
+    "image": "animaux/paon.png",
+    "id": "paon",
+    "prix": "8",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Abeille",
+    "image": "animaux/abeille.png",
+    "id": "abeille",
+    "prix": "8",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Cygne",
+    "image": "animaux/cygne.png",
+    "id": "cygne",
+    "prix": "8",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Ecrevisse",
+    "image": "animaux/ecrevisse.png",
+    "id": "ecrevisse",
+    "prix": "8",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Méduse",
+    "image": "animaux/medusebleue.png",
+    "id": "medusebleue",
+    "prix": "10",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Némo",
+    "image": "animaux/nemo.png",
+    "id": "nemo",
+    "prix": "8",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Phoque",
+    "image": "animaux/phoque.png",
+    "id": "phoque",
+    "prix": "8",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Pieuvre",
+    "image": "animaux/pieuvre.png",
+    "id": "pieuvre",
+    "prix": "8",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Poisson globe",
+    "image": "animaux/poissong.png",
+    "id": "poissong",
+    "prix": "8",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Poulpe",
+    "image": "animaux/poulpe.png",
+    "id": "poulpe",
+    "prix": "8",
+    "categorie": "Animaux"
+  },
+  {
+    "nom": "Tortue",
+    "image": "animaux/tortue.png",
+    "id": "tortue",
+    "prix": "8",
+    "categorie": "Animaux"
+  },
+
+
+  {
+    "nom": "Pain d'épice",
+    "image": "noel/paindepice.png",
+    "id": "paindepice",
+    "prix": "12",
+    "categorie": "Noël"
+  },
+  {
+    "nom": "Bonhomme de neige",
+    "image": "noel/mneige.png",
+    "id": "mneige",
+    "prix": "12",
+    "categorie": "Noël"
+  },
+   {
+    "nom": "Mini sapin",
+    "image": "noel/sapin.png",
+    "id": "sapin",
+    "prix": "12",
+    "categorie": "Noël"
+  },
+  {
+    "nom": "Lutin 1",
+    "image": "noel/lutinm.png",
+    "id": "lutinm",
+    "prix": "12",
+    "categorie": "Noël"
+  },
+  {
+    "nom": "lutin 2",
+    "image": "noel/lutinf.png",
+    "id": "lutinf",
+    "prix": "12",
+    "categorie": "Noël"
+  },
+  {
+    "nom": "Père Noël",
+    "image": "noel/perenoel.png",
+    "id": "perenoel",
+    "prix": "12",
+    "categorie": "Noël"
+  },
+  {
+    "nom": "Ange 1",
+    "image": "noel/angef.png",
+    "id": "angef",
+    "prix": "12",
+    "categorie": "Noël"
+  },
+  {
+    "nom": "Ange 2",
+    "image": "noel/angem.png",
+    "id": "angem",
+    "prix": "12",
+    "categorie": "Noël"
+  },
+
+
+
+  {
+    "nom": "Mage Bleu",
+    "image": "fantastique/magebleu.png",
+    "id": "magebleu",
+    "prix": "12",
+    "categorie": "Fantastique"
+  },
+    {
+    "nom": "Mage Rouge",
+    "image": "fantastique/magerouge.png",
+    "id": "magerouge",
+    "prix": "12",
+    "categorie": "Fantastique"
+  },
+    {
+    "nom": "Cupidon",
+    "image": "fantastique/cupidon.png",
+    "id": "cupidon",
+    "prix": "12",
+    "categorie": "Fantastique"
+  },
+   {
+    "nom": "Dragon",
+    "image": "fantastique/dragon.png",
+    "id": "dragon",
+    "prix": "12",
+    "categorie": "Fantastique"
+  },
+    {
+    "nom": "Among-us 1",
+    "image": "fantastique/amongb.png",
+    "id": "amongb",
+    "prix": "12",
+    "categorie": "Fantastique"
+  },
+  {
+    "nom": "Among-us 2",
+    "image": "fantastique/amongr.png",
+    "id": "amongr",
+    "prix": "12",
+    "categorie": "Fantastique"
+  },
+    {
+    "nom": "Squelette 1",
+    "image": "fantastique/mort1.png",
+    "id": "mort1",
+    "prix": "12",
+    "categorie": "Fantastique"
+  },
+     {
+    "nom": "Squelette 2",
+    "image": "fantastique/mort2.png",
+    "id": "mort2",
+    "prix": "12",
+    "categorie": "Fantastique"
+  },
+   {
+    "nom": "Sorcière",
+    "image": "fantastique/sorciere.png",
+    "id": "sorciere",
+    "prix": "12",
+   "categorie": "Fantastique"
+  },
+  {
+    "nom": "Vampire",
+    "image": "fantastique/vampire.png",
+    "id": "vampire",
+    "prix": "12",
+    "categorie": "Fantastique"
+  },
+
+
+   {
+    "nom": "Harry Potter",
+    "image": "film/harry.png",
+    "id": "harry",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+   {
+    "nom": "Ron Weasley",
+    "image": "film/ron.png",
+    "id": "ron",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+   {
+    "nom": "Hermione Granger",
+    "image": "film/hermione.png",
+    "id": "hermione",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+    {
+    "nom": "Dumbeldore",
+    "image": "film/dumbeldore.png",
+    "id": "dumbeldore",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+   {
+    "nom": "Mario",
+    "image": "film/mario.png",
+    "id": "mario",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+   {
+    "nom": "Luigi",
+    "image": "film/luigi.png",
+    "id": "luigi",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+   {
+    "nom": "Peach",
+    "image": "film/peach.png",
+    "id": "peach",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+   {
+    "nom": "Waluigi",
+    "image": "film/waluigi.png",
+    "id": "waluigi",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+   {
+    "nom": "Yoshi",
+    "image": "film/yoshi.png",
+    "id": "yoshi",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+   {
+    "nom": "Stitch",
+    "image": "film/stitch.png",
+    "id": "stitch",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+   {
+    "nom": "Colère",
+    "image": "film/colere.png",
+    "id": "colere",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+   {
+    "nom": "Tristesse",
+    "image": "film/tristesse.png",
+    "id": "tristesse",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+   {
+    "nom": "Minion",
+    "image": "film/minion.png",
+    "id": "minion",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+   {
+    "nom": "Spike",
+    "image": "film/spike.png",
+    "id": "spike",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+  {
+    "nom": "Elisa",
+    "image": "film/elisa.png",
+    "id": "elisa",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+  {
+    "nom": "Yoda",
+    "image": "film/yoda.png",
+    "id": "yoda",
+    "prix": "10",
+    "categorie": "Films & dessins animés"
+  },
+
+
+
+  
+  
+  
+  {
+    "nom": "Hanna",
+    "image": "princesse/anna.png",
+    "id": "anna",
+    "prix": "16",
+    "categorie": "Princesses"
+  },
+  {
+    "nom": "Belle",
+    "image": "princesse/belle.png",
+    "id": "belle",
+    "prix": "16",
+    "categorie": "Princesses"
+  },
+  {
+    "nom": "Blanche neige",
+    "image": "princesse/blanche.png",
+    "id": "blanche",
+    "prix": "16",
+    "categorie": "Princesses"
+  },
+{
+    "nom": "Elsa",
+    "image": "princesse/elsa.png",
+    "id": "elsa",
+    "prix": "16",
+    "categorie": "Princesses"
+  },
+  {
+    "nom": "Jasmine",
+    "image": "princesse/jasmine.png",
+    "id": "jasmine",
+    "prix": "16",
+    "categorie": "Princesses"
+  },
+  {
+    "nom": "Princesse et la grenouille",
+    "image": "princesse/grenouille.png",
+    "id": "grenouille",
+    "prix": "16",
+    "categorie": "Princesses"
+  },
+  {
+    "nom": "Fée clochette",
+    "image": "princesse/clochette.png",
+    "id": "clochette",
+    "prix": "16",
+    "categorie": "Princesses"
+  },
+  {
+    "nom": "Raiponse",
+    "image": "princesse/raiponse.png",
+    "id": "raiponse",
+    "prix": "16",
+    "categorie": "Princesses"
+  },
+  {
+    "nom": "Belle au bois dormant",
+    "image": "princesse/aurore.png",
+    "id": "aurore",
+    "prix": "16",
+    "categorie": "Princesses"
+  },
+  {
+    "nom": "Cendrillon",
+    "image": "princesse/cendrillon.png",
+    "id": "cendrillon",
+    "prix": "16",
+    "categorie": "Princesses"
+  },
+
+  {
+    "nom": "Cupcake",
+    "image": "nourriture/cupcake.png",
+    "id": "cupcake",
+    "prix": "8",
+    "categorie": "Nourriture"
+  },
+  {
+    "nom": "Poulet",
+    "image": "nourriture/poulet.png",
+    "id": "poulet",
+    "prix": "12",
+    "categorie": "Nourriture"
+  },
+  {
+    "nom": "Oeuf",
+    "image": "nourriture/oeuf.png",
+    "id": "oeuf",
+    "prix": "12",
+    "categorie": "Nourriture"
+  },
+  {
+    "nom": "Melon",
+    "image": "nourriture/melon.png",
+    "id": "melon",
+    "prix": "12",
+    "categorie": "Nourriture"
+  },
+  {
+    "nom": "Macarons",
+    "image": "nourriture/macaron2.png",
+    "id": "macaron2",
+    "prix": "12",
+    "categorie": "Nourriture"
+  },
+  {
+    "nom": "Macaron",
+    "image": "nourriture/macaron1.png",
+    "id": "macaron1",
+    "prix": "12",
+    "categorie": "Nourriture"
+  },
+  {
+    "nom": "Religieuse",
+    "image": "nourriture/gateau.png",
+    "id": "gateau",
+    "prix": "12",
+    "categorie": "Nourriture"
+  },
+
+
+
+  {
+    "nom": "Cactus",
+    "image": "plantes/cactus1.png",
+    "id": "cactus1",
+    "prix": "18",
+    "categorie": "Plantes",
+    "format": "portrait"
+  },
+  {
+    "nom": "Cactus",
+    "image": "plantes/cactus2.png",
+    "id": "cactus2",
+    "prix": "18",
+    "categorie": "Plantes",
+    "format": "portrait"
+  },
+  {
+    "nom": "Arôme",
+    "image": "plantes/arome.png",
+    "id": "arome",
+    "prix": "12",
+    "categorie": "Plantes",
+    "format": "portrait"
+  },
+  {
+    "nom": "Lavande",
+    "image": "plantes/lavande1.png",
+    "id": "lavande1",
+    "prix": "12",
+    "categorie": "Plantes",
+    "format": "portrait"
+  },
+  {
+    "nom": "Plante Grasse",
+    "image": "plantes/plante1.png",
+    "id": "plante1",
+    "prix": "18",
+    "categorie": "Plantes",
+    "format": "portrait"
+  },
+
+  {
+    "nom": "Plante Grasse",
+    "image": "plantes/plante2.png",
+    "id": "plante2",
+    "prix": "18",
+    "categorie": "Plantes",
+    "format": "portrait"
+  },
+
+  {
+    "nom": "Plante Carnivore",
+    "image": "plantes/carnivore.png",
+    "id": "carnivore",
+    "prix": "16",
+    "categorie": "Plantes",
+    "format": "portrait"
+  },
+
+
+
+  {
+    "nom": "Coeur",
+    "image": "grand modele/coeur.png",
+    "id": "coeur",
+    "prix": "16",
+    "categorie": "Grands modèles"
+  },
+  {
+    "nom": "Calamar",
+    "image": "grand modele/calamar.png",
+    "id": "calamar",
+    "prix": "18",
+    "categorie": "Grands modèles"
+  },
+
+  {
+    "nom": "Crayon",
+    "image": "grand modele/crayon.png",
+    "id": "crayon",
+    "prix": "16",
+    "categorie": "Autres"
+  }
+
+]
+
+
+
+
