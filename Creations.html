@@ -85,14 +85,13 @@
         </div>
     </footer>
 
-    <script>
-        let cart = JSON.parse(localStorage.getItem('cart')) || {};
+   <script>
+        let cart = JSON.parse(localStorage.getItem('cameleart_cart')) || {};
 
         function updateCartBadge() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || {};
-            const panierSM = JSON.parse(localStorage.getItem('panier')) || [];
+            const cart = JSON.parse(localStorage.getItem('cameleart_cart')) || {};
+            const panierSM = JSON.parse(localStorage.getItem('cameleart_panier')) || [];
 
-            
             let countCart = 0;
             if (typeof cart === 'object' && !Array.isArray(cart)) {
                 countCart = Object.values(cart).reduce((sum, qty) => {
@@ -103,7 +102,6 @@
                 countCart = cart.length;
             }
 
-            
             let countSM = Array.isArray(panierSM) ? panierSM.length : 0;
             const totalCount = countCart + countSM;
             const badge = document.getElementById("cart-badge");
@@ -134,12 +132,13 @@
                 delete cart[type]; 
             }
 
-            localStorage.setItem('cart', JSON.stringify(cart)); 
+            localStorage.setItem('cameleart_cart', JSON.stringify(cart)); 
             updateCartBadge();
         }
 
         function showNotification() {
             const notif = document.getElementById("notification");
+            if (!notif) return;
             notif.classList.add("show");
             setTimeout(() => {
                 notif.classList.remove("show");
@@ -208,12 +207,15 @@
             const queryParam = urlParams.get("q");
 
             if (queryParam) {
-                document.getElementById("searchInput").value = queryParam;
-                searchCreations(null);
+                const searchInput = document.getElementById("searchInput");
+                if (searchInput) {
+                    searchInput.value = queryParam;
+                    searchCreations(null);
+                }
             }
         });
 
-        // Gestion du Menu Rétractable
+        // Gestion du Menu 
         var prevScrollpos = window.pageYOffset;
         window.onscroll = function() {
             var currentScrollPos = window.pageYOffset;
@@ -229,7 +231,10 @@
         function searchCreations(event) {
             if (event) event.preventDefault();
 
-            const query = document.getElementById("searchInput").value.toLowerCase().trim();
+            const searchInput = document.getElementById("searchInput");
+            if (!searchInput) return;
+
+            const query = searchInput.value.toLowerCase().trim();
             const figures = document.querySelectorAll("#gallery figure");
             const titles = document.querySelectorAll("#gallery .theme-title");
             const noResults = document.getElementById("noResults");
@@ -262,13 +267,18 @@
                 title.style.display = hasVisibleChild ? "" : "none";
             });
 
-            noResults.style.display = visibleCount === 0 ? "block" : "none";
+            if (noResults) {
+                noResults.style.display = visibleCount === 0 ? "block" : "none";
+            }
         }
 
-        document.getElementById("searchInput").addEventListener("input", searchCreations);
+        const searchInput = document.getElementById("searchInput");
+        if (searchInput) {
+            searchInput.addEventListener("input", searchCreations);
+        }
 
         // Initialisation du badge au chargement
-        updateCartBadge();
+        document.addEventListener("DOMContentLoaded", updateCartBadge);
     </script>
 </body>
 </html>

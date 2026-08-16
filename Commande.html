@@ -111,9 +111,8 @@
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
     <script>
-        // --- 1. GESTION DU SCROLL DU MENU ---
+        //Scroll du menu
         let prevScrollpos = window.scrollY;
         window.onscroll = function() {
             let currentScrollPos = window.scrollY;
@@ -136,10 +135,10 @@
             }
         }
 
-        // --- 3. MISE À JOUR DU BADGE DE PANIER ---
-       function updateCartBadge() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || {};
-            const panierSM = JSON.parse(localStorage.getItem('panier')) || [];
+        //Maj du badge
+        function updateCartBadge() {
+            const cart = JSON.parse(localStorage.getItem('cameleart_cart')) || {};
+            const panierSM = JSON.parse(localStorage.getItem('cameleart_panier')) || [];
 
             let countCart = 0;
             if (typeof cart === 'object' && !Array.isArray(cart)) {
@@ -165,7 +164,7 @@
             }
         }
         
-        // --- 4. APERÇU DE LA PHOTO UPLOADÉE ---
+        //Apercu photo
         const photoInput = document.getElementById("photo");
         if (photoInput) {
             photoInput.addEventListener("change", function(event) {
@@ -189,7 +188,7 @@
             });
         }
 
-        // --- 5. SOUMISSION DU FORMULAIRE ET AJOUT AU PANIER ---
+        //Soumission du formulaire
         const form = document.getElementById("surmesure-form");
         if (form) {
             form.addEventListener("submit", function(e) {
@@ -215,10 +214,10 @@
                         photoClient: base64
                     };
 
-                    // Sauvegarde dans le localStorage
-                    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+                    // Sauvegarde dans le localStorage 
+                    let panier = JSON.parse(localStorage.getItem("cameleart_panier")) || [];
                     panier.push(produit);
-                    localStorage.setItem("panier", JSON.stringify(panier));
+                    localStorage.setItem("cameleart_panier", JSON.stringify(panier));
 
                     // Déclenchement de la notification et mise à jour du badge
                     showNotification();
@@ -237,7 +236,7 @@
             });
         }
 
-        // --- 6. BOUTON RÉINITIALISER ---
+        //Bouton réinitialiser
         const btnSupprimer = document.getElementById("supprimer");
         if (btnSupprimer) {
             btnSupprimer.addEventListener("click", function() {

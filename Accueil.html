@@ -99,12 +99,12 @@
             prevScrollpos = currentScrollPos;
         };
 
-        // Mise à jour du badge panier
-       function updateCartBadge() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || {};
-            const panierSM = JSON.parse(localStorage.getItem('panier')) || [];
+       
+        function updateCartBadge() {
+            const cart = JSON.parse(localStorage.getItem('cameleart_cart')) || {};
+            const panierSM = JSON.parse(localStorage.getItem('cameleart_panier')) || [];
 
-            // 1. Calcul pour les articles standards (cart)
+            
             let countCart = 0;
             if (typeof cart === 'object' && !Array.isArray(cart)) {
                 countCart = Object.values(cart).reduce((sum, qty) => {
@@ -114,6 +114,8 @@
             } else if (Array.isArray(cart)) {
                 countCart = cart.length;
             }
+
+            
             let countSM = Array.isArray(panierSM) ? panierSM.length : 0;
             const totalCount = countCart + countSM;
             const badge = document.getElementById("cart-badge");
@@ -127,6 +129,7 @@
                 badge.classList.remove("hidden");
             }
         }
-    </script>
+        updateCartBadge();
+</script>
 </body>
 </html>

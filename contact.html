@@ -125,10 +125,10 @@
 
         // Mise à jour du badge panier
         function updateCartBadge() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || {};
-            const panierSM = JSON.parse(localStorage.getItem('panier')) || [];
+            const cart = JSON.parse(localStorage.getItem('cameleart_cart')) || {};
+            const panierSM = JSON.parse(localStorage.getItem('cameleart_panier')) || [];
 
-            // 1. Calcul pour les articles standards (cart)
+            //Calcul pour les articles standards 
             let countCart = 0;
             if (typeof cart === 'object' && !Array.isArray(cart)) {
                 countCart = Object.values(cart).reduce((sum, qty) => {

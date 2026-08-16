@@ -81,7 +81,7 @@
         </div>
     </footer>
 
-    <script>
+  <script>
         let prevScrollpos = window.scrollY;
         window.onscroll = function() {
             const currentScrollPos = window.scrollY;
@@ -96,9 +96,9 @@
         const imageFolders = ["animaux", "noel", "princesse", "fantastique", "film", "grand modele", "nourriture", "plantes"];
         let creationsData = {};
 
-       function updateCartBadge() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || {};
-            const panierSM = JSON.parse(localStorage.getItem('panier')) || [];
+        function updateCartBadge() {
+            const cart = JSON.parse(localStorage.getItem('cameleart_cart')) || {};
+            const panierSM = JSON.parse(localStorage.getItem('cameleart_panier')) || [];
 
             // 1. Calcul pour les articles standards (cart)
             let countCart = 0;
@@ -126,29 +126,29 @@
         }
 
         function updateQuantity(item, change) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || {};
+            let cart = JSON.parse(localStorage.getItem('cameleart_cart')) || {};
 
             if (cart[item]) {
                 cart[item] += change;
                 if (cart[item] <= 0) delete cart[item];
             }
 
-            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('cameleart_cart', JSON.stringify(cart));
             displayCart();
             updateCartBadge();
         }
 
         function supprimerSurMesure(id) {
-            let panierSM = JSON.parse(localStorage.getItem("panier")) || [];
+            let panierSM = JSON.parse(localStorage.getItem("cameleart_panier")) || [];
             panierSM = panierSM.filter(item => item.id !== id);
-            localStorage.setItem("panier", JSON.stringify(panierSM));
+            localStorage.setItem("cameleart_panier", JSON.stringify(panierSM));
             displayCart();
             updateCartBadge();
         }
 
         function clearCart() {
-            localStorage.removeItem('cart');
-            localStorage.removeItem('panier');
+            localStorage.removeItem('cameleart_cart');
+            localStorage.removeItem('cameleart_panier');
             displayCart();
             updateCartBadge();
         }
@@ -180,8 +180,8 @@
             });
 
         function displayCart() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || {};
-            const panierSM = JSON.parse(localStorage.getItem("panier")) || [];
+            const cart = JSON.parse(localStorage.getItem('cameleart_cart')) || {};
+            const panierSM = JSON.parse(localStorage.getItem("cameleart_panier")) || [];
             const cartList = document.getElementById("cart-list");
             const actions = document.querySelector(".cart-actions");
 
