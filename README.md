@@ -1,7 +1,7 @@
 # Camele_art
 Bienvenue sur mon site de vente en ligne ! 
 
-#Projet en cours — Site E-Commerce
+##Projet en cours — Site E-Commerce
 
 > **Projet personnel développé en parallèle de mon BUT Informatique (IUT de Grenoble)**  
 > **Live Demo:** [Ajoute ton lien GitHub Pages ici]
