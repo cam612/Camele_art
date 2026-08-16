@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camélé_art | Panier</title>
+
+    <link rel="icon" href="https://i.postimg.cc/fTd7QJvj/cam_Fichier_61.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="crochets.css">
+</head>
+
+<body>
+    <main>
+        <nav id="menu">
+            <div class="ul1">
+                <a href="Accueil.html">
+                    <img class="logo" src="https://i.postimg.cc/wTN5Y7kX/cam-Fichier-51.png" alt="Logo Camélé'art">
+                </a>
+            </div>
+
+            <div class="ul3">
+                <form class="search-box" action="Creations.html" method="GET">
+                    <input type="text" name="q" placeholder="Rechercher...">
+                    <button type="submit">
+                        <img class="icone_nav" src="fond/recherche.png" alt="Rechercher">
+                    </button>
+                </form>
+            </div>
+
+            <ul class="ul2">
+                <li class="dropdown">
+                    <b><a class="titre_menu" href="Creations.html">Créations</a></b>
+                    <div class="sous-menu">
+                        <ul class="bloc-liens">
+                            <li><a href="Creations.html#animaux">Animaux</a></li>
+                            <li><a href="Creations.html#noel">Noël</a></li>
+                            <li><a href="Creations.html#princesses">Princesses</a></li>
+                        </ul>
+                        <ul class="bloc-liens">
+                            <li><a href="Creations.html#fantastique">Fantastique</a></li>
+                            <li><a href="Creations.html#nourriture">Nourriture</a></li>
+                            <li><a href="Creations.html#plantes">Plantes</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sous-menu-droite">
+                        <a href="Creations.html#films-&-dessins-animes">Films & dessins animés</a>
+                        <a href="Creations.html#grands-modeles">Grands Modèles</a>
+                        <a href="Creations.html#autres">Autres</a>
+                    </div>
+                </li>
+                <li><b><a class="titre_menu" href="Contact.html">Contact</a></b></li>
+                <li><b><a class="titre_menu" href="Commande.html">Sur-mesure</a></b></li>
+                <li>
+                    <a href="Panier.html" class="cart-icon-container">
+                        <img class="icone_nav" src="https://cdn-icons-png.flaticon.com/128/10252/10252890.png" alt="Panier">
+                        <span id="cart-badge" class="cart-badge">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <section class="cart">
+            <h2>Mon Panier</h2>
+            <ul id="cart-list"></ul>
+            <div class="cart-actions">
+                <button class="cart-clear" onclick="clearCart()">Vider le panier</button>
+                <button class="commander">Commander</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div id="foot_cont">
+            <p>Site développé par Camille Lacharme avec HTML et CSS.</p>
+            <p>&copy; Camille Lacharme 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        let prevScrollpos = window.scrollY;
+        window.onscroll = function() {
+            const currentScrollPos = window.scrollY;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("menu").style.top = "0";
+            } else {
+                document.getElementById("menu").style.top = "-250px";
+            }
+            prevScrollpos = currentScrollPos;
+        };
+
+        const imageFolders = ["animaux", "noel", "princesse", "fantastique", "film", "grand modele", "nourriture", "plantes"];
+        let creationsData = {};
+
+        function updateCartBadge() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || {};
+            const panierSM = JSON.parse(localStorage.getItem('panier')) || [];
+            const totalCount = Object.values(cart).reduce((sum, qty) => sum + qty, 0) + panierSM.length;
+            const badge = document.getElementById("cart-badge");
+
+            if (badge) {
+                badge.innerText = totalCount;
+                badge.classList.toggle("hidden", totalCount === 0);
+            }
+        }
+
+        function updateQuantity(item, change) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+            if (cart[item]) {
+                cart[item] += change;
+                if (cart[item] <= 0) delete cart[item];
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+            updateCartBadge();
+        }
+
+        function supprimerSurMesure(id) {
+            let panierSM = JSON.parse(localStorage.getItem("panier")) || [];
+            panierSM = panierSM.filter(item => item.id !== id);
+            localStorage.setItem("panier", JSON.stringify(panierSM));
+            displayCart();
+            updateCartBadge();
+        }
+
+        function clearCart() {
+            localStorage.removeItem('cart');
+            localStorage.removeItem('panier');
+            displayCart();
+            updateCartBadge();
+        }
+
+        function getImagePath(item) {
+            for (const folder of imageFolders) {
+                const path = `${folder}/${item}.png`;
+                if (imageExists(path)) return path;
+            }
+            return null;
+        }
+
+        function imageExists(path) {
+            const http = new XMLHttpRequest();
+            http.open('HEAD', path, false);
+            http.send();
+            return http.status !== 404;
+        }
+
+        fetch("creations.json")
+            .then(res => res.json())
+            .then(data => {
+                creationsData = data.reduce((acc, item) => {
+                    acc[item.id] = item;
+                    return acc;
+                }, {});
+                displayCart();
+                updateCartBadge();
+            });
+
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || {};
+            const panierSM = JSON.parse(localStorage.getItem("panier")) || [];
+            const cartList = document.getElementById("cart-list");
+            const actions = document.querySelector(".cart-actions");
+
+            cartList.innerHTML = '';
+            let totalArticles = 0;
+
+            if (Object.keys(cart).length === 0 && panierSM.length === 0) {
+                cartList.innerHTML = "<li style='justify-content: center; background: none !important;'>Votre panier est vide.</li>";
+                actions.style.display = "none";
+
+                const goShop = document.createElement("a");
+                goShop.href = "Creations.html";
+                goShop.className = "btn-retour-crea";
+                goShop.textContent = "Voir les créations";
+                cartList.appendChild(goShop);
+                return;
+            }
+
+            actions.style.display = "flex";
+
+            for (const item in cart) {
+                const itemData = creationsData[item];
+
+                const listItem = document.createElement("li");
+                const itemInfo = document.createElement("div");
+                itemInfo.className = "cart-item-info";
+
+                const imgPath = getImagePath(item);
+                if (imgPath) {
+                    const img = document.createElement("img");
+                    img.src = imgPath;
+                    img.alt = itemData && itemData.nom ? itemData.nom : item;
+
+                    if (itemData && itemData.format === "portrait") {
+                        img.classList.add("img_port");
+                    }
+                    itemInfo.appendChild(img);
+                }
+
+                const namePriceDiv = document.createElement("div");
+                namePriceDiv.className = "cart-name-price";
+
+                const nameSpan = document.createElement("span");
+                nameSpan.className = "cart-item-name";
+                nameSpan.textContent = itemData && itemData.nom ? itemData.nom : (item.charAt(0).toUpperCase() + item.slice(1));
+
+                const priceSpan = document.createElement("span");
+                priceSpan.className = "cart-item-price";
+
+                const prix = itemData ? itemData.prix : 0;
+                priceSpan.textContent = `${prix} €`;
+
+                namePriceDiv.appendChild(nameSpan);
+                namePriceDiv.appendChild(priceSpan);
+                itemInfo.appendChild(namePriceDiv);
+                listItem.appendChild(itemInfo);
+
+                const qtySelector = document.createElement("div");
+                qtySelector.className = "cart-qty-selector";
+
+                const btnMinus = document.createElement("button");
+                btnMinus.className = "quantity-button";
+                btnMinus.textContent = "-";
+                btnMinus.onclick = () => updateQuantity(item, -1);
+
+                const qtyVal = document.createElement("span");
+                qtyVal.className = "qty-val";
+                qtyVal.textContent = cart[item];
+
+                const btnPlus = document.createElement("button");
+                btnPlus.className = "quantity-button";
+                btnPlus.textContent = "+";
+                btnPlus.onclick = () => updateQuantity(item, 1);
+
+                qtySelector.appendChild(btnMinus);
+                qtySelector.appendChild(qtyVal);
+                qtySelector.appendChild(btnPlus);
+
+                listItem.appendChild(qtySelector);
+                cartList.appendChild(listItem);
+
+                totalArticles += prix * cart[item];
+            }
+
+            panierSM.forEach(item => {
+                const li = document.createElement("li");
+                li.className = "surmesure-item";
+
+                li.innerHTML = `
+                    <div class="cart-item-info">
+                        <img src="${item.photoClient}" class="img-client" alt="Photo du client">
+                        <div class="cart-name-price">
+                            <span class="cart-item-name">${item.nom}</span>
+                            <span class="cart-item-price">${item.prix} €</span>
+                        </div>
+                    </div>
+                    <button id="btn-supprimer" class="quantity-button" onclick="supprimerSurMesure('${item.id}')">
+                        <img src="fond/disposition.png" alt="Supprimer" class="btn-cart-img">
+                    </button>
+                `;
+
+                cartList.appendChild(li);
+                totalArticles += Number(item.prix) || 0;
+            });
+
+            const livraison = 5;
+            const totalGeneral = totalArticles + livraison;
+
+            const totalDiv = document.createElement("div");
+            totalDiv.className = "cart-total";
+
+            totalDiv.innerHTML = `
+                <p>Total des articles : <b>${totalArticles} €</b></p>
+                <p>Livraison : <b>${livraison} €</b></p>
+                <p>Total général : <b>${totalGeneral} €</b></p>
+            `;
+
+            cartList.appendChild(totalDiv);
+        }
+    </script>
+</body>
+</html>
