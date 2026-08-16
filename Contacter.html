@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camélé_art | Accueil</title>
+    <title>Camélé_art | Contact</title>
     
     <link rel="icon" href="https://i.postimg.cc/fTd7QJvj/cam_Fichier_61.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,18 +64,42 @@
             </ul>
         </nav>
 
-        <section class="a_propos">
-            <h2>À propos</h2>
-            <article class="a_propos_txt">
-                <p>
-                    Bienvenue dans mon univers créatif !<br>
-                    Moi c'est Camille, et je suis la créatrice passionnée qui se cache derrière Camélé'art.<br>
-                    Ici, tout commence avec une simple pelote de fil et un crochet. Rang après rang, maille après maille, je prends le temps de donner vie à des objets uniques, colorés et texturés.
-                    Loin de la fabrication à la chaîne, je mets un point d'honneur à créer des pièces qui ont une âme, faites pour durer et pour apporter un peu de douceur dans votre quotidien.<br>
-                    Installez-vous confortablement et bonne découverte !
-                </p>
-                <img src="fond/amigurumi.png" alt="Création en crochet amigurumi">
-            </article>
+        <section class="centre">
+            <div class="message">
+                <h2 id="cont_titre">Me contacter</h2>
+
+                <form action="https://formspree.io/f/xzdwweqe" method="POST">
+                    <div class="infos_perso">
+                        <div class="nom_prenom">
+                            <label>Prénom *</label>
+                            <input class="input_contact" type="text" name="prenom" required>
+                        </div>
+                        <div class="nom_prenom">
+                            <label>Nom *</label>
+                            <input class="input_contact" type="text" name="nom" required>
+                        </div>
+                    </div>
+
+                    <div class="infos_perso">
+                        <div class="nom_prenom">
+                            <label>Adresse mail *</label>
+                            <input class="input_contact" type="email" name="email" placeholder="example@gmail.fr" required>
+                        </div>
+                        <div class="nom_prenom">
+                            <label>Téléphone</label>
+                            <input class="input_contact" type="tel" name="telephone" placeholder="+33">
+                        </div>
+                    </div>
+
+                    <label>Votre message</label>
+                    <textarea name="message" placeholder="Ecrivez votre texte..." required></textarea>
+
+                    <div class="cart-actions">
+                        <button class="cart-clear" type="reset">Effacer</button>
+                        <button class="commander" type="submit">Envoyer</button>
+                    </div>
+                </form>
+            </div>
         </section>
     </main>
 
@@ -99,12 +123,12 @@
             prevScrollpos = currentScrollPos;
         };
 
-       
+        // Mise à jour du badge panier
         function updateCartBadge() {
             const cart = JSON.parse(localStorage.getItem('cameleart_cart')) || {};
             const panierSM = JSON.parse(localStorage.getItem('cameleart_panier')) || [];
 
-            
+            //Calcul pour les articles standards 
             let countCart = 0;
             if (typeof cart === 'object' && !Array.isArray(cart)) {
                 countCart = Object.values(cart).reduce((sum, qty) => {
@@ -115,7 +139,7 @@
                 countCart = cart.length;
             }
 
-            
+          
             let countSM = Array.isArray(panierSM) ? panierSM.length : 0;
             const totalCount = countCart + countSM;
             const badge = document.getElementById("cart-badge");
@@ -130,6 +154,6 @@
             }
         }
         updateCartBadge();
-</script>
+    </script>
 </body>
 </html>
