@@ -1,7 +1,7 @@
 # Camele_art
 Bienvenue sur mon site de vente en ligne ! 
 
-#Projet de Crochet — Site E-Commerce  & Créations Sur-Mesure
+#Projet en cours — Site E-Commerce
 
 > **Projet personnel développé en parallèle de mon BUT Informatique (IUT de Grenoble)**  
 > **Live Demo:** [Ajoute ton lien GitHub Pages ici]
@@ -24,6 +24,6 @@ Ce projet est un site e-commerce et vitrine dédié à la vente de mes **créati
 * **HTML5** , **CSS3**, **JavaScript**
 ---
 
-## 👤 Auteure
+## Auteure
 
 * **Camille** - [Profil GitHub](https://github.com/cam612)
