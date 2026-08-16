@@ -127,19 +127,32 @@
         function updateCartBadge() {
             const cart = JSON.parse(localStorage.getItem('cart')) || {};
             const panierSM = JSON.parse(localStorage.getItem('panier')) || [];
-            const totalCount = Object.values(cart).reduce((sum, qty) => sum + qty, 0) + panierSM.length;
-            const badge = document.getElementById("cart-badge");
 
+            // 1. Calcul pour les articles standards (cart)
+            let countCart = 0;
+            if (typeof cart === 'object' && !Array.isArray(cart)) {
+                countCart = Object.values(cart).reduce((sum, qty) => {
+                    const num = Number(qty);
+                    return sum + (isNaN(num) ? 0 : num);
+                }, 0);
+            } else if (Array.isArray(cart)) {
+                countCart = cart.length;
+            }
+
+          
+            let countSM = Array.isArray(panierSM) ? panierSM.length : 0;
+            const totalCount = countCart + countSM;
+            const badge = document.getElementById("cart-badge");
             if (!badge) return;
 
             badge.innerText = totalCount;
+
             if (totalCount === 0) {
                 badge.classList.add("hidden");
             } else {
                 badge.classList.remove("hidden");
             }
         }
-
         updateCartBadge();
     </script>
 </body>
