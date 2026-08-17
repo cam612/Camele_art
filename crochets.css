@@ -145,6 +145,10 @@ nav li {
     color: #ffffff;
 }
 
+#searchInput{
+    padding: 0px 10px;
+}
+
 /* --- Alignements conteneurs Nav --- */
 
 .ul1 {
@@ -798,6 +802,7 @@ textarea {
     width: 400px;
 }
 
+
 .exemples {
     display: flex;
     flex-direction: row;
@@ -906,8 +911,65 @@ footer {
     #menu a {
         margin: 0 2px;
         text-decoration: none;
-        color: #ffffff;
+        color: black;
     }
+
+    nav{
+    position: fixed;
+    background-image: url("fond/fond_3.png");
+    background-position: top center;
+    background-size:1200px;
+    z-index: 12;
+    width: 100%;
+    text-align: center;
+    top: 0;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    height: auto;
+    min-height: 210px;
+    transition: top 0.6s, padding-bottom 0.4s ease;
+    }
+
+
+    #prenom {
+    width: 300px;
+    
+}
+
+    #description {
+        width: 300px;
+    }
+
+    .upload-btn{
+        width: 100px;
+    }
+
+
+    
+.search-box input {
+    margin-left: 10px;
+    padding: 0px 7px;
+    height: 30px;
+    border-radius: 15px;
+    width: 100px;
+    margin-top: 0;
+    background-color: rgb(39, 36, 36);
+    color: #ffffff;
+    border: none;
+    box-shadow: rgb(8, 8, 8) 5px 3px 4px;
+}
+
+    .a_propos_txt img{
+        width: 400px;
+        margin-left: 20px;
+    }
+
+    .a_propos_txt {
+    display: flex;
+    flex-wrap: wrap;
+    }
+    
 }
 
 @media only screen and (max-width: 392px) {
