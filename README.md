@@ -4,7 +4,7 @@ Bienvenue sur mon site de vente en ligne !
 ## Projet en cours — Site E-Commerce
 
 > **Projet personnel développé en parallèle de mon BUT Informatique (IUT de Grenoble)**  
-> **Live Demo:** [https://cam612.github.io/Camele_art/]
+> **Live Demo:** https://cam612.github.io/Camele_art/
 
 ---
 
